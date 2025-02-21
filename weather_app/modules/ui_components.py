@@ -2,7 +2,8 @@ import streamlit as st
 import os
 import base64
 
-def set_background():
+def set_background(image_path):
+    print(image_path)
     """Sets a background image using base64 encoding."""
     image_path = "assets/background.png"  # Ensure this file exists
 
@@ -24,28 +25,21 @@ def set_background():
 # Map weather conditions to appropriate image URLs
 def get_weather_image(weather):
     image_folder = os.path.join(os.getcwd(), 'assets', 'weather_icons')   # Directory where images are stored
+    image_path="assets/weather_icons/"
     images = {
-        'Clear': 'sunny.jpg',
-        'Clouds': 'cloudy.jpeg',
+        'Clear': 'sunny.png',
+        'Clouds': 'cloudy.png',
         'Rain': 'rainy.png',
         'Snow': 'snow.png',
-        'Thunderstorm': 'thunder.jpg',
-        'Mist': 'mist.jpg'
+        'Thunderstorm': 'thunder.png',
+        'Mist': 'mist.png'
     }
+    image_path+=images.get(weather, 'default.jpg')
+    set_background(image_path)
     # Return the corresponding image path or a default image
     return os.path.join(image_folder, images.get(weather, 'default.jpg'))
 
 def display_weather(weather_data):
-    page_bg_img = '''
-                    <style>
-                    body {
-                    background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
-                    background-size: cover;
-                    }
-                    </style>
-                    '''
-
-    st.markdown(page_bg_img, unsafe_allow_html=True)
     if not weather_data:
         st.error("❌ Failed to retrieve weather data. Please try again.")
         return
@@ -59,6 +53,7 @@ def display_weather(weather_data):
 
     # Get dynamic image based on weather condition
     image_url = get_weather_image(weather_main)
+    set_background(image_url)
 
     # Display Weather Information
     col1, col2, col3 = st.columns([12,10,10])  # Create three columns
@@ -99,15 +94,4 @@ def display_weather(weather_data):
     st.info(f"**Description:** {description}")
     st.image(image_url, caption=f"Current Weather in {city}", use_container_width=True)
 
-    # Dynamic background image
-    st.markdown(
-        f"""
-        <style>
-        body {{
-            background-image: url('{image_url}');
-            background-size: cover;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+

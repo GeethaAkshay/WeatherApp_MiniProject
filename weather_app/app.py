@@ -3,7 +3,7 @@ from modules.api_handler import get_weather
 from modules.ui_components import display_weather,set_background
 
 def main():
-    set_background()
+    set_background("assets/background.png")
     st.title("🌤️ Weather App")
 
     city = st.text_input("Enter city name:", "")
