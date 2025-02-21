@@ -109,3 +109,10 @@ def kelvin_to_celsius(kelvin):
 ## License
 This project is licensed under the MIT License.
 
+## Output Screenshots
+
+### Main UI
+![Main UI](assets/screenshots/default.png)
+
+### Results
+![Weather](assets/screenshots/broken clouds.png)
