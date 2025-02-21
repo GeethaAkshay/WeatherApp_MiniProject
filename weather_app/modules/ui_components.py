@@ -1,6 +1,8 @@
-import streamlit as st
-import os
 import base64
+import os
+
+import streamlit as st
+
 
 def set_background(image_path):
     """
@@ -26,8 +28,12 @@ def set_background(image_path):
     """
     st.markdown(background_style, unsafe_allow_html=True)
 
+
 # Map weather conditions to appropriate image URLs
+
+
 def get_weather_image(weather):
+<<<<<<< HEAD
     """
     Maps weather conditions to an appropriate image.
 
@@ -39,18 +45,26 @@ def get_weather_image(weather):
     """
     image_folder = os.path.join(os.getcwd(), 'assets', 'weather_icons') 
     image_path="assets/weather_icons/"
+=======
+    image_folder = os.path.join(
+        os.getcwd(), "assets", "weather_icons"
+    )
+    # Directory where images are stored
+    image_path = "assets/weather_icons/"
+>>>>>>> 6bc6d0965c26ca52c30f25ea6a47766708d267a2
     images = {
-        'Clear': 'sunny.png',
-        'Clouds': 'cloudy.png',
-        'Rain': 'rainy.png',
-        'Snow': 'snow.png',
-        'Thunderstorm': 'thunder.png',
-        'Mist': 'mist.png'
+        "Clear": "sunny.png",
+        "Clouds": "cloudy.png",
+        "Rain": "rainy.png",
+        "Snow": "snow.png",
+        "Thunderstorm": "thunder.png",
+        "Mist": "mist.png",
     }
-    image_path+=images.get(weather, 'default.png')
+    image_path += images.get(weather, "default.jpg")
     set_background(image_path)
     # Return the corresponding image path or a default image
-    return os.path.join(image_folder, images.get(weather, 'default.png'))
+    return os.path.join(image_folder, images.get(weather, "default.jpg"))
+
 
 def display_weather(weather_data):
     """
@@ -63,57 +77,84 @@ def display_weather(weather_data):
         st.error("❌ Failed to retrieve weather data. Please try again.")
         return
 
-    city = weather_data['name']
-    weather_main = weather_data['weather'][0]['main']
-    temp = weather_data['main']['temp']
-    humidity = weather_data['main']['humidity']
-    wind_speed = weather_data['wind']['speed']
-    description = weather_data['weather'][0]['description'].title()
+    city = weather_data["name"]
+    weather_main = weather_data["weather"][0]["main"]
+    temp = weather_data["main"]["temp"]
+    humidity = weather_data["main"]["humidity"]
+    wind_speed = weather_data["wind"]["speed"]
+    description = weather_data["weather"][0]["description"].title()
 
     # Get dynamic image based on weather condition
     image_url = get_weather_image(weather_main)
     set_background(image_url)
 
     # Display Weather Information
-    col1, col2, col3 = st.columns([12,10,10])  # Create three columns
+    col1, col2, col3 = st.columns([12, 10, 10])  # Create three columns
 
     with col1:
         st.markdown(
             """
+<<<<<<< HEAD
             <div style="text-align: center; padding: 10px;
               background-color: #ff9e19;
               color: #ffffff; border-radius: 15px; height:215px">
+=======
+            <div style="text-align: center;
+                        padding: 10px;
+                        background-color: #FF6F61;
+                        border-radius: 15px;">
+>>>>>>> 6bc6d0965c26ca52c30f25ea6a47766708d267a2
                 <h2>🌡️ Temperature</h2>
                 <h3>{}°C</h3>
             </div>
-            """.format(temp),
-            unsafe_allow_html=True
+            """.format(
+                temp
+            ),
+            unsafe_allow_html=True,
         )
 
     with col2:
         st.markdown(
             """
+<<<<<<< HEAD
             <div style="text-align: center; padding: 20px;
               background-color: #514c45; 
             color: #ffffff; border-radius: 15px;">
+=======
+            <div style="text-align: center;
+                        padding: 20px;
+                        background-color: #4DB6AC;
+                        border-radius: 15px;">
+>>>>>>> 6bc6d0965c26ca52c30f25ea6a47766708d267a2
                 <h2>💧   Humidity</h2>
                 <h3>{}%</h3>
             </div>
-            """.format(humidity),
-            unsafe_allow_html=True
+            """.format(
+                humidity
+            ),
+            unsafe_allow_html=True,
         )
 
     with col3:
         st.markdown(
             """
+<<<<<<< HEAD
             <div style="text-align: center; padding: 20px; 
             background-color: #64B5F6;
               color: #ffffff; border-radius: 15px;">
+=======
+            <div style="text-align: center;
+                        padding: 20px;
+                        background-color: #64B5F6;
+                        border-radius: 15px;">
+>>>>>>> 6bc6d0965c26ca52c30f25ea6a47766708d267a2
                 <h2>🌬️ Wind Speed</h2>
                 <h3>{} m/s</h3>
             </div>
-            """.format(wind_speed),
-            unsafe_allow_html=True
+            """.format(
+                wind_speed
+            ),
+            unsafe_allow_html=True,
         )
 
     st.markdown(
@@ -125,7 +166,11 @@ def display_weather(weather_data):
     """,
     unsafe_allow_html=True
     )   
+<<<<<<< HEAD
     st.image(image_url, caption=f"Current Weather in {city}", 
              use_container_width=True)
 
 
+=======
+    st.image(image_url, caption=f"Current Weather in {city}", use_container_width=True)
+>>>>>>> 6bc6d0965c26ca52c30f25ea6a47766708d267a2

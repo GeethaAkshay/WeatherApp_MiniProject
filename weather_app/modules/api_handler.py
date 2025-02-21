@@ -2,6 +2,7 @@
 import requests
 from config import API_KEY
 
+
 def get_weather(city):
     """
     Fetch weather data from OpenWeatherMap API.
