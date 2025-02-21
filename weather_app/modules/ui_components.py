@@ -3,8 +3,12 @@ import os
 import base64
 
 def set_background(image_path):
-    print(image_path)
-    """Sets a background image using base64 encoding."""
+    """
+    Sets a background image using base64 encoding.
+
+    Args:
+        image_path (str): Path to the background image file.
+    """
     image_path = "assets/background.png"  # Ensure this file exists
 
     with open(image_path, "rb") as img_file:
@@ -24,7 +28,16 @@ def set_background(image_path):
 
 # Map weather conditions to appropriate image URLs
 def get_weather_image(weather):
-    image_folder = os.path.join(os.getcwd(), 'assets', 'weather_icons')   # Directory where images are stored
+    """
+    Maps weather conditions to an appropriate image.
+
+    Args:
+        weather (str): The main weather condition (e.g., 'Clear', 'Clouds').
+
+    Returns:
+        str: Path to the corresponding weather image.
+    """
+    image_folder = os.path.join(os.getcwd(), 'assets', 'weather_icons') 
     image_path="assets/weather_icons/"
     images = {
         'Clear': 'sunny.png',
@@ -40,6 +53,12 @@ def get_weather_image(weather):
     return os.path.join(image_folder, images.get(weather, 'default.png'))
 
 def display_weather(weather_data):
+    """
+    Displays weather information in the Streamlit app.
+
+    Args:
+        weather_data (dict): JSON response from the weather API.
+    """
     if not weather_data:
         st.error("❌ Failed to retrieve weather data. Please try again.")
         return
@@ -61,7 +80,9 @@ def display_weather(weather_data):
     with col1:
         st.markdown(
             """
-            <div style="text-align: center; padding: 10px; background-color: #ff9e19; color: #ffffff; border-radius: 15px; height:215px">
+            <div style="text-align: center; padding: 10px;
+              background-color: #ff9e19;
+              color: #ffffff; border-radius: 15px; height:215px">
                 <h2>🌡️ Temperature</h2>
                 <h3>{}°C</h3>
             </div>
@@ -72,7 +93,9 @@ def display_weather(weather_data):
     with col2:
         st.markdown(
             """
-            <div style="text-align: center; padding: 20px; background-color: #514c45; color: #ffffff; border-radius: 15px;">
+            <div style="text-align: center; padding: 20px;
+              background-color: #514c45; 
+            color: #ffffff; border-radius: 15px;">
                 <h2>💧   Humidity</h2>
                 <h3>{}%</h3>
             </div>
@@ -83,7 +106,9 @@ def display_weather(weather_data):
     with col3:
         st.markdown(
             """
-            <div style="text-align: center; padding: 20px; background-color: #64B5F6; color: #ffffff; border-radius: 15px;">
+            <div style="text-align: center; padding: 20px; 
+            background-color: #64B5F6;
+              color: #ffffff; border-radius: 15px;">
                 <h2>🌬️ Wind Speed</h2>
                 <h3>{} m/s</h3>
             </div>
@@ -94,11 +119,13 @@ def display_weather(weather_data):
     st.markdown(
     f"""
     <div style=" padding: 10px; border-radius: 5px;">
-        <p style="color: white; font-weight: bold;">Description: {description}</p>
+        <p style="color: white; font-weight: bold;">
+        Description: {description}</p>
     </div>
     """,
     unsafe_allow_html=True
     )   
-    st.image(image_url, caption=f"Current Weather in {city}", use_container_width=True)
+    st.image(image_url, caption=f"Current Weather in {city}", 
+             use_container_width=True)
 
 
