@@ -103,10 +103,10 @@ def kelvin_to_celsius(kelvin):
 ## Output Screenshots
 
 ### Main UI
-![Main UI](weather_app\assets\screenshots\default.png)
+![Main UI](weather_app/assets/screenshots/default.png)
 
 ### Results
-![Weather](weather_app\assets\screenshots\broken clouds.png)
+![Weather](weather_app/assets/screenshots/broken clouds.png)
 
 
 ## Contributors
