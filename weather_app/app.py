@@ -1,6 +1,7 @@
 import streamlit as st
 from modules.api_handler import get_weather
-from modules.ui_components import display_weather,set_background
+from modules.ui_components import display_weather, set_background
+
 
 def main():
     set_background("assets/background.png")
@@ -18,6 +19,7 @@ def main():
     st.markdown("<p style='color:white;'>Anish Reddy</p>", unsafe_allow_html=True)
     st.markdown("<p style='color:white;'>Lahir Sai Vignesh</p>", unsafe_allow_html=True)
     st.markdown("<p style='color:white;'>Harigovind</p>", unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()

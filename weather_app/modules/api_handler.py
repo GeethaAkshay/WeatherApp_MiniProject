@@ -2,6 +2,7 @@
 import requests
 from config import API_KEY
 
+
 def get_weather(city):
     """Fetch weather data from OpenWeatherMap API."""
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
