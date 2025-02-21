@@ -34,10 +34,10 @@ def get_weather_image(weather):
         'Thunderstorm': 'thunder.png',
         'Mist': 'mist.png'
     }
-    image_path+=images.get(weather, 'default.jpg')
+    image_path+=images.get(weather, 'default.png')
     set_background(image_path)
     # Return the corresponding image path or a default image
-    return os.path.join(image_folder, images.get(weather, 'default.jpg'))
+    return os.path.join(image_folder, images.get(weather, 'default.png'))
 
 def display_weather(weather_data):
     if not weather_data:
@@ -61,7 +61,7 @@ def display_weather(weather_data):
     with col1:
         st.markdown(
             """
-            <div style="text-align: center; padding: 10px; background-color: #FF6F61; border-radius: 15px;">
+            <div style="text-align: center; padding: 10px; background-color: #ff9e19; color: #ffffff; border-radius: 15px; height:215px">
                 <h2>🌡️ Temperature</h2>
                 <h3>{}°C</h3>
             </div>
@@ -72,7 +72,7 @@ def display_weather(weather_data):
     with col2:
         st.markdown(
             """
-            <div style="text-align: center; padding: 20px; background-color: #4DB6AC; border-radius: 15px;">
+            <div style="text-align: center; padding: 20px; background-color: #514c45; color: #ffffff; border-radius: 15px;">
                 <h2>💧   Humidity</h2>
                 <h3>{}%</h3>
             </div>
@@ -83,7 +83,7 @@ def display_weather(weather_data):
     with col3:
         st.markdown(
             """
-            <div style="text-align: center; padding: 20px; background-color: #64B5F6; border-radius: 15px;">
+            <div style="text-align: center; padding: 20px; background-color: #64B5F6; color: #ffffff; border-radius: 15px;">
                 <h2>🌬️ Wind Speed</h2>
                 <h3>{} m/s</h3>
             </div>
@@ -91,7 +91,14 @@ def display_weather(weather_data):
             unsafe_allow_html=True
         )
 
-    st.info(f"**Description:** {description}")
+    st.markdown(
+    f"""
+    <div style=" padding: 10px; border-radius: 5px;">
+        <p style="color: white; font-weight: bold;">Description: {description}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+    )   
     st.image(image_url, caption=f"Current Weather in {city}", use_container_width=True)
 
 
