@@ -100,6 +100,15 @@ def kelvin_to_celsius(kelvin):
   API_KEY = os.getenv("OPENWEATHER_API_KEY")
   ```
 
+## Output Screenshots
+
+### Main UI
+![Main UI](weather_app/assets/screenshots/default.png)
+
+### Results
+![Weather](weather_app/assets/screenshots/brokenclouds.png)
+
+
 ## Contributors
 - Geetha Akshay
 - Anish Reddy
